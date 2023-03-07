@@ -28,8 +28,7 @@ export class ImageGallery extends Component {
         .then(photos => {
           if (photos.status !== 'ok') {
             return Promise.reject(photos.message);
-			}
-			
+          }
 
           this.setState({
             photos: [...this.state.photos, ...photos.articles],
