@@ -31,11 +31,11 @@ class App extends Component {
       imgUrl: largeImageUrl,
       tags: imageTags,
     });
+    this.toggleModal();
   };
 
   render() {
     const { searchQuery, imgUrl, tags, showModal } = this.state;
-    
 
     return (
       <Wrapper>
