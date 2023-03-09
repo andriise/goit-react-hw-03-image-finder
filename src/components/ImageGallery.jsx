@@ -113,10 +113,11 @@ class ImageGallery extends Component {
     return (
       <>
         <ImageGalleryBox onClick={this.onCardClick}>
-          {images.map(({ id, webformatURL, tags }) => {
+          {images.map(({ id, webformatURL, tags, largeImageURL }) => {
             return (
               <ImageGalleryItem
                 key={id}
+                onClick={() => this.props.onCardClick(largeImageURL, tags)}
                 smallImageURL={webformatURL}
                 tags={tags}
               />
