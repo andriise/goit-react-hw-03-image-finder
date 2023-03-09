@@ -27,10 +27,8 @@ class App extends Component {
   };
 
   onCardClick = (largeImageUrl, imageTags) => {
-    this.setState({
-      imgUrl: largeImageUrl,
-      tags: imageTags,
-    });
+    this.setState({ imgUrl: largeImageUrl, tags: imageTags });
+    this.toggleModal();
   };
 
   render() {

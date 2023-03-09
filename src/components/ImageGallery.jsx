@@ -93,26 +93,26 @@ class ImageGallery extends Component {
       );
   };
 
-  onCardClick = e => {
-    if (e.currentTarget !== e.target) {
-      const currentImageUrl = e.target.currentSrc;
-      const imageArr = this.state.images.filter(
-        ({ webformatURL }) => webformatURL === currentImageUrl
-      );
-      const largeImageURL = imageArr[0].largeImageURL;
-      const imageTags = imageArr[0].tags;
+  // onCardClick = e => {
+  //   if (e.currentTarget !== e.target) {
+  //     const currentImageUrl = e.target.currentSrc;
+  //     const imageArr = this.state.images.filter(
+  //       ({ webformatURL }) => webformatURL === currentImageUrl
+  //     );
+  //     const largeImageURL = imageArr[0].largeImageURL;
+  //     const imageTags = imageArr[0].tags;
 
-      this.props.onCardClick(largeImageURL, imageTags);
-      this.props.onOpenModal();
-    }
-  };
+  //     this.props.onCardClick(largeImageURL, imageTags);
+  //     this.props.onOpenModal();
+  //   }
+  // };
 
   render() {
     const { status, images, totalHits } = this.state;
 
     return (
       <>
-        <ImageGalleryBox onClick={this.onCardClick}>
+        <ImageGalleryBox >
           {images.map(({ id, webformatURL, tags, largeImageURL }) => {
             return (
               <ImageGalleryItem
