@@ -25,7 +25,7 @@ export class Modal extends Component {
   };
 
   render() {
-    const modalRoot = document.querySelector('#modal-root');
+    const modalRoot = document.querySelector('#root');
     return createPortal(
       <Overlay onClick={this.handleBackdropClick}>
         <ModalBox>{this.props.children}</ModalBox>
