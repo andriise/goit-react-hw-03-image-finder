@@ -1,9 +1,17 @@
-export const ImageGalleryItem = (photos, id) => {
-  return photos.map(el => {
-    return (
-      <li className="ImageGalleryItem" key={id}>
-        <img className="ImageGalleryItem-image" src={photos} alt="" />
-      </li>
-    );
-  });
+import { ImageItem } from './ImageGalleryItem.styled';
+import PropTypes from 'prop-types';
+
+const ImageGalleryItem = ({ smallImageURL, tags }) => {
+  return (
+    <ImageItem>
+      <img src={smallImageURL} alt={tags} />
+    </ImageItem>
+  );
 };
+
+ImageGalleryItem.propTypes = {
+  smallImageURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+};
+
+export default ImageGalleryItem;

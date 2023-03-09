@@ -1,25 +1,58 @@
-// API_KEY = 11497081-cc65ac3ee2055db377a22cee7;
-
-import { Component } from 'react';
-import { Searchbar } from './Searchbar';
-import { ImageGallery } from './ImageGallery';
-// import { Modal } from './Modal';
-
-export class App extends Component {
+import React, { Component } from 'react';
+import ImageGallery from './ImageGallery';
+import Searchbar from './Searchbar';
+import { Modal } from './Modal';
+import { Wrapper } from './App.styled';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+class App extends Component {
   state = {
-    textSearch: '',
+    searchQuery: '',
+    imgUrl: '',
+    tags: '',
+    showModal: false,
+    buttonDiasbled: true,
   };
 
-  handleSubmit = textSearch => {
-    this.setState({ textSearch });
+  handleSubmit = searchQuery => {
+    this.setState({
+      searchQuery,
+    });
   };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
+  onCardClick = (largeImageUrl, imageTags) => {
+    this.setState({
+      imgUrl: largeImageUrl,
+      tags: imageTags,
+    });
+  };
+
   render() {
+    const { searchQuery, imgUrl, tags, showModal } = this.state;
+
     return (
-      <div>
-        <Searchbar onSearch={this.handleSubmit} />
-        <ImageGallery />
-        {/* <Modal /> */}
-      </div>
+      <Wrapper>
+        <Searchbar onSubmit={this.handleSubmit} searchQuery={searchQuery} />
+        <ImageGallery
+          onCardClick={this.onCardClick}
+          searchQuery={searchQuery}
+          onOpenModal={this.toggleModal}
+        />
+        {showModal && (
+          <Modal onCloseModal={this.toggleModal}>
+            {<img src={imgUrl} alt={tags} />}
+          </Modal>
+        )}
+        <ToastContainer autoClose={3000} theme="dark" />
+      </Wrapper>
     );
   }
 }
+
+export default App;
