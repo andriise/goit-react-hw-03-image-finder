@@ -27,12 +27,15 @@ class App extends Component {
   };
 
   onCardClick = (largeImageUrl, imageTags) => {
-    this.setState({ imgUrl: largeImageUrl, tags: imageTags });
-    this.toggleModal();
+    this.setState({
+      imgUrl: largeImageUrl,
+      tags: imageTags,
+    });
   };
 
   render() {
     const { searchQuery, imgUrl, tags, showModal } = this.state;
+    
 
     return (
       <Wrapper>

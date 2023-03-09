@@ -14,6 +14,7 @@ const Status = {
   REJECTED: 'rejected',
 };
 
+
 class ImageGallery extends Component {
   state = {
     status: Status.IDLE,
@@ -109,6 +110,7 @@ class ImageGallery extends Component {
 
   render() {
     const { status, images, totalHits } = this.state;
+    
 
     return (
       <>
